@@ -1,0 +1,10 @@
+// The settings in this file will overwrite default and user settings.
+// Prerequisite: install extension recommendations in extensions.json
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.requireConfig": true
+}
