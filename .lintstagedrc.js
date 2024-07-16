@@ -1,15 +1,15 @@
 const path = require('path')
 
-function parseFiles(filenames) {
-  return filenames.map((f) => path.relative(process.cwd(), f)).join(' --file ')
+function parseFilesString(filenames, separator) {
+  return filenames.map((f) => path.relative(process.cwd(), f)).join(separator)
 }
 
 function buildEslintCommand(filenames) {
-  return `next lint --fix --file ${parseFiles(filenames)}`
+  return `next lint --fix --file ${parseFilesString(filenames, ' --file ')}`
 }
 
 function buildStylelintCommand(filenames) {
-  return `stylelint --fix --quiet ${parseFiles(filenames)}`
+  return `stylelint --fix --quiet ${parseFilesString(filenames, ' ')}`
 }
 
 module.exports = {
