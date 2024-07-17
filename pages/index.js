@@ -1,3 +1,5 @@
+import Scene from '@/components/3DObject/Scene'
+
 export default function Home() {
-  return <h1>TJM Planet</h1>
+  return <Scene />
 }
