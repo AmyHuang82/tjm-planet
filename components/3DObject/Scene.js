@@ -10,7 +10,7 @@ function Scene() {
       <Canvas>
         <OrbitControls position={[50, 10, 50]} />
         <Suspense fallback={null}>
-          <Environment preset="city" />
+          <Environment preset="lobby" />
         </Suspense>
         <Suspense fallback={null}>
           <Object />
