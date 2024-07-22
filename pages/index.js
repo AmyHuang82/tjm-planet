@@ -1,5 +1,13 @@
-import Scene from '@/components/3DObject/Scene'
+import Link from 'next/link'
 
 export default function Home() {
-  return <Scene />
+  return (
+    <div style={{ padding: 20 }}>
+      <ul>
+        <li>
+          <Link href="/3d_object">3D Object Demo</Link>
+        </li>
+      </ul>
+    </div>
+  )
 }
