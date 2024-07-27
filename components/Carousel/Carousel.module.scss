@@ -1,0 +1,101 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    margin-bottom: 32px;
+  }
+
+  p {
+    margin-top: 16px;
+  }
+}
+
+$carousel-max-height: 650px;
+$carousel-ratio: 16 / 9;
+
+.carousel {
+  position: relative;
+  width: 100%;
+  max-height: $carousel-max-height;
+  aspect-ratio: $carousel-ratio;
+
+  button {
+    z-index: 2;
+  }
+
+  :global(.slick-arrow) {
+    width: 50px;
+    height: 100%;
+
+    &:before {
+      display: none;
+    }
+  }
+
+  :global(.slick-prev) {
+    left: 0;
+    background: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.25) 90%);
+  }
+
+  :global(.slick-next) {
+    right: 0;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.25) 90%);
+  }
+
+  .item {
+    max-height: $carousel-max-height;
+    border-radius: 8px;
+    aspect-ratio: $carousel-ratio;
+    object-fit: cover;
+  }
+
+  :global(.slick-dots) {
+    bottom: 16px;
+    display: flex !important;
+    justify-content: center;
+    gap: 6px;
+
+    li {
+      width: fit-content;
+      height: fit-content;
+    }
+
+    img {
+      width: 10vw;
+      max-width: 65px;
+      border: 2px solid transparent;
+      border-radius: 3px;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      filter: grayscale(100%);
+    }
+
+    :global(.slick-active) img {
+      border: 2px solid white;
+      filter: none;
+    }
+  }
+}
+
+$arrow-size: 42px;
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  width: $arrow-size;
+  height: $arrow-size;
+  transform: translateY(-50%);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  &.left {
+    left: 0;
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  &.right {
+    right: 0;
+  }
+}
