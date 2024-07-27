@@ -13,11 +13,13 @@
   }
 }
 
+$carousel-max-height: 650px;
 $carousel-ratio: 16 / 9;
 
 .carousel {
   position: relative;
   width: 100%;
+  max-height: $carousel-max-height;
   aspect-ratio: $carousel-ratio;
 
   button {
@@ -44,6 +46,7 @@ $carousel-ratio: 16 / 9;
   }
 
   .item {
+    max-height: $carousel-max-height;
     border-radius: 8px;
     aspect-ratio: $carousel-ratio;
     object-fit: cover;
@@ -62,6 +65,7 @@ $carousel-ratio: 16 / 9;
 
     img {
       width: 10vw;
+      max-width: 65px;
       border: 2px solid transparent;
       border-radius: 3px;
       aspect-ratio: 4 / 3;
