@@ -1,9 +1,9 @@
 overrides:
   - files:
-    - '**/*.scss'
+      - '**/*.scss'
     customSyntax: 'postcss-scss'
     plugins:
-        - stylelint-scss
+      - stylelint-scss
 
 extends:
   - stylelint-config-recommended
@@ -13,13 +13,18 @@ plugins:
   - stylelint-order
 
 rules:
-  order/order: 
+  selector-pseudo-class-no-unknown:
+    - true
+    - ignorePseudoClasses:
+        - 'global'
+
+  order/order:
     - 'custom-properties'
     - 'declarations'
   order/properties-order:
     - groupName: 'positioning'
       properties:
-        -  'content'
+        - 'content'
         - 'position'
         - 'top'
         - 'right'
@@ -72,7 +77,7 @@ rules:
         - 'white-space'
         - 'text-overflow'
     - groupName: 'other'
-      properties: 
+      properties:
         - 'box-shadow'
         - 'border-radius'
         - 'transform'
