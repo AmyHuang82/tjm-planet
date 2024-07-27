@@ -8,7 +8,7 @@ export default function Home() {
           <Link href="/3d_object">3D Object Demo</Link>
         </li>
         <li>
-          <Link href="/demo">Demo</Link>
+          <Link href="/carousel">Carousel Demo</Link>
         </li>
       </ul>
     </div>
