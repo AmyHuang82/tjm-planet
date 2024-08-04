@@ -8,6 +8,13 @@ const Pannellum = dynamic(() => import('pannellum-react').then((mod) => mod.Pann
   ssr: false,
 })
 
+const PannellumHotspot = dynamic(
+  () => import('pannellum-react').then((mod) => mod.Pannellum.Hotspot),
+  {
+    ssr: false,
+  }
+)
+
 function Panorama() {
   const [showCarousel, setShowCarousel] = useState(false)
 
@@ -23,7 +30,7 @@ function Panorama() {
         autoLoad
         showZoomCtrl={false}
       >
-        <Pannellum.Hotspot
+        <PannellumHotspot
           type="custom"
           pitch={12.41}
           yaw={117.76}
