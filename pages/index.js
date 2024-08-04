@@ -10,6 +10,9 @@ export default function Home() {
         <li>
           <Link href="/carousel">Carousel Demo</Link>
         </li>
+        <li>
+          <Link href="/panorama">Panorama Demo</Link>
+        </li>
       </ul>
     </div>
   )
