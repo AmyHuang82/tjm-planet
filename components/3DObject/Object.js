@@ -3,11 +3,14 @@ import { useLoader } from '@react-three/fiber'
 import { useMemo } from 'react'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 
-const objects = ['原民雕刻木盒']
+const objects = [
+  { filename: '原民雕刻木盒', scale: 0.3, position: [-0.1, -1, 0], rotation: [0, 0.4, 0] },
+]
 
 function Object() {
-  const obj = useLoader(OBJLoader, `/3DObjects/${objects[0]}.obj`)
-  const texture = useTexture(`/3DObjects/${objects[0]}.jpg`)
+  const { filename, scale, position, rotation } = objects[0]
+  const obj = useLoader(OBJLoader, `/3DObjects/${filename}.obj`)
+  const texture = useTexture(`/3DObjects/${filename}.jpg`)
   const geometry = useMemo(() => {
     let g
     obj.traverse((c) => {
@@ -20,7 +23,7 @@ function Object() {
   }, [obj])
 
   return (
-    <mesh geometry={geometry} scale={0.05} position={[-0.1, 0, 0]} rotation={[-0.5, 0.4, 0.2]}>
+    <mesh geometry={geometry} scale={scale} position={position} rotation={rotation}>
       <meshPhysicalMaterial map={texture} />
     </mesh>
   )
