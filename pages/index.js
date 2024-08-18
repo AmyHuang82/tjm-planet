@@ -13,6 +13,9 @@ export default function Home() {
         <li>
           <Link href="/panorama">Panorama Demo</Link>
         </li>
+        <li>
+          <Link href="/parallax">Parallax Demo</Link>
+        </li>
       </ul>
     </div>
   )
