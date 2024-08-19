@@ -98,12 +98,8 @@ function Parallax() {
         height="100vh"
         image="/panorama/demo.jpg"
         pitch={0}
-        maxPitch={0}
-        minPitch={0}
         yaw={0}
         hfov={110}
-        maxHfov={110}
-        minHfov={110}
         autoLoad
         showZoomCtrl={false}
       />
