@@ -16,6 +16,9 @@ export default function Home() {
         <li>
           <Link href="/parallax">Parallax Demo</Link>
         </li>
+        <li>
+          <Link href="/aframe">AFrame Demo</Link>
+        </li>
       </ul>
     </div>
   )
