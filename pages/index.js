@@ -19,6 +19,9 @@ export default function Home() {
         <li>
           <Link href="/aframe">AFrame Demo</Link>
         </li>
+        <li>
+          <Link href="/aframe_unclickable">AFrame Unclickable Demo</Link>
+        </li>
       </ul>
     </div>
   )
