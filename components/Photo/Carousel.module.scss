@@ -1,0 +1,141 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.6);
+}
+
+$carousel-max-height: 450px; // Photo Tip: 透過設定圖片高度，以設定圖片尺寸
+
+.sliderWrapper {
+  display: grid;
+  grid-template-columns: 144px 1fr;
+
+  width: $carousel-max-height * 1.8;
+  max-height: $carousel-max-height !important;
+  position: relative;
+
+  :global(img) {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+}
+
+.sliderFrame {
+  width: 100%;
+  height: 100%;
+
+  transform: scale(1.52); // Photo Tip: 設定背景圖大小
+  position: absolute;
+
+  background-image: url(../../public/photo/photo_frame_inner.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+$pagination-slider-w: 120px;
+
+.paginationSlider {
+  :global(.slick-arrow) {
+    width: 100%;
+    height: 10%;
+
+    left: 42%;
+    transform: translate(-50%, 0) !important;
+    z-index: 2;
+
+    &:before {
+      display: none;
+    }
+  }
+
+  :global(.slick-prev) {
+    top: -2%;
+  }
+
+  :global(.slick-next) {
+    top: 88%;
+  }
+
+  :global(.slick-current) .item img {
+    border-color: white;
+    filter: none;
+  }
+
+  .item {
+    h3 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: $pagination-slider-w;
+      height: 80px; // Photo Tip: 搭配設定 JS 的 slidesToShow，可以調整符合輪播圖高度的尺寸
+
+      margin: 4px 0;
+
+      img {
+        aspect-ratio: 3 / 2;
+
+        border: 2px solid transparent;
+        border-radius: 8px;
+
+        filter: brightness(0.7);
+        transition: all 0.3s ease-in-out;
+
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+.arrow {
+  display: inline-block;
+  width: 100%;
+  height: calc($pagination-slider-w * 0.6);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background-image: url(../../public/carousel/arrow.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &.up {
+    transform: translate(-50%, -50%);
+  }
+
+  &.down {
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+}
+
+.photoSlider {
+  :global(.slick-current) .item img {
+    filter: none;
+  }
+
+  .item {
+    h3 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: $carousel-max-height;
+      position: relative;
+
+      img {
+        filter: brightness(0.7);
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+}
