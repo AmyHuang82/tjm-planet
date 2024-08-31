@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { useEffect, useRef, useState } from 'react'
 import styles from './Carousel.module.scss'
 
