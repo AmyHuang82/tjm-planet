@@ -62,7 +62,7 @@ function CarouselCaption({ paragraphCount, currentSlideIndex }) {
           toggleCaption(false)
           setIsAnimationPaused(false)
         }}
-      ></span>
+      />
 
       <div className={styles.captionHeader}>
         <p>太極門迎鼓大典</p>

@@ -25,11 +25,11 @@ function Carousel() {
   return (
     <div className={styles.container}>
       <div className={styles.sliderWrapper}>
-        <div className={styles.movieTitle}></div>
+        <div className={styles.movieTitle} />
 
         <div className={styles.sliderFrame}>
-          <div style={{ '--bg-image': `url(${movies[currentSlideIndex].image})` }}></div>
-          <div style={{ '--bg-image': `url(${movies[currentSlideIndex].image})` }}></div>
+          <div style={{ '--bg-image': `url(${movies[currentSlideIndex].image})` }} />
+          <div style={{ '--bg-image': `url(${movies[currentSlideIndex].image})` }} />
         </div>
 
         <Slider
@@ -49,7 +49,7 @@ function Carousel() {
             </button>
           }
           dots={true}
-          customPaging={() => <span className={styles.dot}></span>}
+          customPaging={() => <span className={styles.dot} />}
           beforeChange={(_, newIndex) => setCurrentSlideIndex(newIndex)}
         >
           {movies.map((movie, index) => (

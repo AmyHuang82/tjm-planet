@@ -29,7 +29,7 @@ function Carousel({ totalSlides = 6 }) {
   return (
     <div className={styles.container}>
       <div className={styles.sliderWrapper}>
-        <div className={styles.sliderFrame}></div>
+        <div className={styles.sliderFrame} />
         <Slider
           asNavFor={paginationNav}
           ref={(slider) => (photoSliderRef = slider)}

@@ -5,3 +5,4 @@ extends:
 
 rules:
   '@next/next/no-img-element': warn
+  react/self-closing-comp: error
