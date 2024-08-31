@@ -1,0 +1,253 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+$carousel-ratio: 16 / 9;
+
+.sliderWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 80%; // Movie Tip: 調整輪播圖寬度
+  aspect-ratio: $carousel-ratio;
+
+  position: relative;
+}
+
+.movieTitle {
+  width: 30%;
+  aspect-ratio: 5 / 1;
+  position: absolute;
+  top: -5%;
+
+  background-image: url(../../public/movie/movie_title.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+$carousel-frame-w: 75%;
+
+$dot-size: 18px;
+$dot-filter-size: calc($dot-size / 3);
+$dot-filter-bg-size: calc($dot-size / 2);
+
+$arrow-translate: 9%;
+
+.sliderFrame {
+  width: $carousel-frame-w;
+  aspect-ratio: $carousel-ratio;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  div:first-child {
+    width: calc(100% + $arrow-translate + 160px);
+    height: calc(100% + 80px);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-image: url(../../public/movie/movie_frame_inner.png);
+    background-position: center;
+    background-size: calc(100% + 60px) calc(100% + 130px);
+    background-repeat: no-repeat;
+    opacity: 0.5;
+  }
+
+  div:last-child {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    opacity: 0.3;
+
+    &::before,
+    &::after {
+      content: '';
+
+      width: 100%;
+      height: 100%;
+
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: var(--bg-image);
+    }
+
+    &::before {
+      left: calc(0% - 110px);
+      background-position: left;
+    }
+
+    &::after {
+      right: calc(0% - 110px);
+      background-position: right;
+    }
+  }
+}
+
+.movieSlider {
+  width: $carousel-frame-w;
+
+  :global(.slick-arrow) {
+    z-index: 2;
+
+    &:before {
+      display: none;
+    }
+  }
+
+  :global(.slick-prev) {
+    left: calc($arrow-translate * -1);
+  }
+  :global(.slick-next) {
+    right: calc($arrow-translate * -1);
+  }
+
+  :global(.slick-dots) {
+    display: flex !important;
+    justify-content: center;
+    bottom: -15%;
+
+    li {
+      width: fit-content;
+      height: fit-content;
+    }
+
+    .dot {
+      display: inline-block;
+      margin: auto 3px;
+
+      width: $dot-size;
+      height: $dot-size;
+
+      position: relative;
+
+      background-color: #fff;
+      border-radius: 50%;
+
+      &::before,
+      &::after {
+        content: '';
+
+        display: block;
+        width: $dot-filter-size;
+        height: $dot-filter-size;
+
+        position: absolute;
+        top: calc(50% - calc($dot-filter-size / 2));
+        left: calc(50% - calc($dot-filter-size / 2));
+
+        border-radius: 50%;
+        background-color: #fff;
+        box-shadow: 0 0 $dot-size $dot-filter-bg-size #fff;
+      }
+    }
+  }
+
+  .item {
+    &.playing {
+      .cover {
+        display: none;
+      }
+    }
+
+    h3 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 100%;
+      aspect-ratio: $carousel-ratio;
+
+      position: relative;
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: $carousel-ratio;
+        border: none;
+      }
+
+      .cover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+
+        img {
+          width: 100%;
+          height: 100%;
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: cover;
+        }
+
+        div {
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+
+          width: 50%;
+          aspect-ratio: 1/1;
+
+          background-image: url(../../public/movie/movie_play_button.png);
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+
+          border-radius: 50%;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.arrow {
+  display: inline-block;
+  width: 160px;
+  height: 100px;
+
+  position: absolute;
+  top: 50%;
+
+  background-image: url(../../public/carousel/arrow.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  &.right {
+    transform: translate(-50%, -50%) rotate(-90deg);
+  }
+
+  &.left {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}
