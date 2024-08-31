@@ -8,9 +8,6 @@ export default function Home() {
           <Link href="/3d_object">3D Object Demo</Link>
         </li>
         <li>
-          <Link href="/parallax">Parallax Demo</Link>
-        </li>
-        <li>
           <Link href="/aframe">AFrame Demo</Link>
         </li>
         <li>
