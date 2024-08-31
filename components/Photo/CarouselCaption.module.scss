@@ -1,27 +1,37 @@
-$carousel-max-height: 630px;
+$carousel-max-height: 450px;
 $carousel-ratio: 16 / 9;
 
-.caption {
-  max-width: 100%;
-  max-height: 100%;
-  height: $carousel-max-height;
-  aspect-ratio: $carousel-ratio;
+@mixin disable-scrollbar() {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &::-moz-scrollbar {
+    display: none;
+  }
+  &::-o-scrollbar {
+    display: none;
+  }
+  &::-ms-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none; /* firefox*/
+}
 
+.caption {
   position: absolute;
   bottom: 0;
-  transform: translateY(70%);
+  max-width: 100%;
+  height: $carousel-max-height;
+  max-height: 100%;
 
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.9) 30%,
-    rgba(0, 0, 0, 0) 30%
-  );
-  border-radius: 6px;
-
-  font-size: 42px;
-  text-align: center;
+  font-size: 32px;
   color: #ffffff;
+  text-align: center;
+  border-radius: 6px;
+  transform: translateY(70%);
+  cursor: pointer;
+  aspect-ratio: $carousel-ratio;
 
   transition: transform 0.3s ease-in-out;
 
@@ -36,13 +46,12 @@ $carousel-ratio: 16 / 9;
     }
 
     .captionBodyScroll {
-      max-height: $carousel-max-height;
+      @include disable-scrollbar();
+      height: 100%;
+      padding-bottom: 32px;
+      margin-top: 20px;
       opacity: 1;
       overflow-y: auto;
-
-      // animation-name: scrollUpWithPause;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
     }
 
     .captionHeader {
@@ -54,42 +63,71 @@ $carousel-ratio: 16 / 9;
       opacity: 1;
     }
   }
+}
 
-  &.fullBackground {
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.9) 30%,
+    rgba(0, 0, 0, 0) 30%
+  );
+
+  &.active {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+  }
+
+  &.animation {
+    animation: fadeIn 0.8s ease-in-out;
   }
 }
 
 .captionToggleBar {
+  position: absolute;
+  top: 10px;
+  left: 50%;
   display: inline-block;
   width: 60px;
   height: 5px;
+  border-radius: 15px;
+  transform: translateX(-50%);
 
   background-color: white;
-  border-radius: 15px;
-
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .captionHeader {
+  position: relative;
   padding-top: 32px;
   transition: opacity 0.3s ease-in-out;
 }
 
 .captionHeaderSubtitle {
+  overflow: hidden;
   max-width: 60%;
   margin: 0 auto;
 
   white-space: nowrap;
   text-overflow: ellipsis;
-
-  overflow: hidden;
 }
 
 .captionBody {
+  position: relative;
+
+  overflow: hidden;
   max-width: 65%;
   height: calc($carousel-max-height * 1);
 
@@ -97,24 +135,22 @@ $carousel-ratio: 16 / 9;
 
   font-size: 32px;
   text-align: left;
-  text-justify: newspaper;
   text-align: justify;
-
-  overflow: hidden;
+  text-justify: newspaper;
   transition: opacity 0.3s ease-in-out;
 }
 
 .captionBodyTitle {
+  padding-top: 32px;
+  margin-bottom: 48px;
   font-size: 42px;
   text-align: center;
-  margin-bottom: 48px;
-  padding-top: 32px;
 }
 
 .captionBodyScroll {
   padding-bottom: 16px;
   opacity: 0;
-  animation-duration: calc(20s * var(--scroll-percentage));
+  animation-duration: 20s;
 
   &.paused {
     animation-play-state: paused;
@@ -125,14 +161,4 @@ $carousel-ratio: 16 / 9;
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-}
-
-@keyframes scrollUpWithPause {
-  0% {
-    transform: translateY($carousel-max-height);
-  }
-
-  100% {
-    transform: translateY(calc($carousel-max-height * var(--scroll-percentage) * -1));
-  }
 }

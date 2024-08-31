@@ -1,40 +1,24 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './CarouselCaption.module.scss'
 
 function CarouselCaption({ paragraphCount, currentSlideIndex }) {
   const [activeCaption, setActiveCaption] = useState(false)
-  const [isFullBackground, setIsFullBackground] = useState(false)
 
-  const [isAnimationPaused, setIsAnimationPaused] = useState(false)
-
-  const toggleCaption = (status) => {
-    setActiveCaption(status)
-
-    if (status) {
-      setIsFullBackground(status)
-    } else {
-      setTimeout(() => setIsFullBackground(status), status ? 0 : 300)
-    }
+  function toggleCaption() {
+    setActiveCaption(!activeCaption)
   }
 
   useEffect(() => {
-    toggleCaption(false)
+    setActiveCaption(false)
   }, [currentSlideIndex])
 
   return (
     <div
-      className={`${styles.caption} ${activeCaption ? styles.active : ''} ${isFullBackground ? styles.fullBackground : ''}`}
-      onClick={() => toggleCaption(true)}
-      onTouchStart={() => toggleCaption(true)}
+      className={`${styles.caption} ${activeCaption ? styles.active : ''}`}
+      onClick={toggleCaption}
     >
-      <span
-        className={styles.captionToggleBar}
-        onClick={(e) => {
-          e.stopPropagation()
-          toggleCaption(false)
-          setIsAnimationPaused(false)
-        }}
-      />
+      <div className={`${styles.background} ${activeCaption ? styles.active : styles.animation}`} />
+      <span className={styles.captionToggleBar} />
 
       <div className={styles.captionHeader}>
         <p>太極門迎鼓大典</p>
@@ -42,15 +26,7 @@ function CarouselCaption({ paragraphCount, currentSlideIndex }) {
       </div>
 
       <div className={styles.captionBody}>
-        <div
-          className={`${styles.captionBodyScroll} ${isAnimationPaused ? styles.paused : ''}`}
-          onMouseDown={() => setIsAnimationPaused(true)}
-          onMouseEnter={() => setIsAnimationPaused(true)}
-          onTouchStart={() => setIsAnimationPaused(true)}
-          onMouseLeave={() => setIsAnimationPaused(false)}
-          onMouseUp={() => setIsAnimationPaused(false)}
-          onTouchEnd={() => setIsAnimationPaused(false)}
-        >
+        <div className={styles.captionBodyScroll}>
           <div className={styles.captionBodyTitle}>
             <p>太極門迎鼓大典</p>
             <p>1999.06.08 美國，一群神氣家族的師兄姐飛越大西洋</p>
