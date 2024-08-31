@@ -21,34 +21,6 @@ function CarouselCaption({ paragraphCount, currentSlideIndex }) {
     toggleCaption(false)
   }, [currentSlideIndex])
 
-  // useEffect(() => {
-  //   const scrollElements = document.querySelectorAll(`.${styles.captionBodyScroll}`)
-
-  //   if (scrollElements.length === 0) return
-
-  //   scrollElements.forEach((el) => {
-  //     if (!el) return
-
-  //     const { scrollHeight, offsetParent: { clientHeight: containerHeight } = {} } = el
-
-  //     const isNeedScroll = +(scrollHeight / containerHeight).toFixed(2) > 0.8
-  //     if (isNeedScroll) {
-  //       const scrollPercentage = Math.floor(scrollHeight / containerHeight)
-  //       const lastScrollHeight = (scrollHeight - containerHeight * scrollPercentage) * 1
-  //       const diffHeight = containerHeight - lastScrollHeight
-
-  //       const diffPercentage = +(diffHeight / containerHeight).toFixed(1)
-  //       const total =
-  //         //   scrollPercentage + ((1 - diffPercentage) * (diffPercentage <= 0.5 ? 1 : -1)) / 2
-  //         scrollPercentage + (1 - diffPercentage) / 2
-
-  //       el.style.setProperty('--scroll-percentage', `${total}`)
-  //     } else {
-  //       el.style.setProperty('--scroll-percentage', 1)
-  //     }
-  //   })
-  // }, [])
-
   return (
     <div
       className={`${styles.caption} ${activeCaption ? styles.active : ''} ${isFullBackground ? styles.fullBackground : ''}`}
