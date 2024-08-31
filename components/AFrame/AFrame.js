@@ -8,7 +8,7 @@ const Scene = dynamic(() => import('../3DObject/Scene'), { ssr: false })
 function AFrameContent() {
   return (
     <a-scene cursor="rayOrigin: mouse" raycaster="objects: [clickable]">
-      <a-sky src="/panorama/demo.png" rotation="0 -130 0" />
+      <a-sky src="/panorama/washington_background.png" rotation="0 -130 0" />
       <a-image
         src="/carousel/1999_Washington/01.jpg"
         position="5.0263 2.00585 -4.26811"

@@ -96,7 +96,7 @@ function Parallax() {
         id="pannellum"
         width="100%"
         height="100vh"
-        image="/panorama/demo.png"
+        image="/panorama/washington_background.png"
         pitch={0}
         yaw={0}
         hfov={110}
