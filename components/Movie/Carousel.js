@@ -49,9 +49,7 @@ function Carousel() {
             </button>
           }
           dots={true}
-          customPaging={() => {
-            return <span className={styles.dot}></span>
-          }}
+          customPaging={() => <span className={styles.dot}></span>}
           beforeChange={(_, newIndex) => setCurrentSlideIndex(newIndex)}
         >
           {movies.map((movie, index) => (
