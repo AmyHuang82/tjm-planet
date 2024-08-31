@@ -33,13 +33,14 @@ const ITEMS = [
   },
 ]
 
-function AFrameContent() {
+function AFrameContent({ isModalShown }) {
   return (
     <a-scene cursor="rayOrigin: mouse" raycaster="objects: [clickable]">
       <a-sky src="/panorama/washington_background.png" rotation="0 -130 0" />
-      {ITEMS.map(({ id, ...item }) => (
-        <a-image key={id} clickable={id} class="clickable" {...item} />
-      ))}
+      {!isModalShown &&
+        ITEMS.map(({ id, ...item }) => (
+          <a-image key={id} clickable={id} class="clickable" {...item} />
+        ))}
     </a-scene>
   )
 }
@@ -79,7 +80,7 @@ function AFrame() {
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>
-        <AFrameContent />
+        <AFrameContent isModalShown={Boolean(currentItem)} />
       </Suspense>
       {currentItem && (
         <Modal onCancel={() => setCurrentItem(null)}>
