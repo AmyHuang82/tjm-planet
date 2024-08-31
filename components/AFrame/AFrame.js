@@ -45,11 +45,12 @@ function AFrameContent({ isModalShown }) {
   )
 }
 
-function AFrame() {
+function AFrame({ clickable = true }) {
   const [isClient, setIsClient] = useState(false)
   const [currentItem, setCurrentItem] = useState(null)
 
   function init() {
+    if (!clickable) return
     this.el.addEventListener('click', this.onClick.bind(this))
     this.el.addEventListener('touchend', this.onClick.bind(this))
   }
