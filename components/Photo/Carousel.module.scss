@@ -1,37 +1,28 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  background: rgba(0, 0, 0, 0.6);
-}
-
-$carousel-max-height: 450px; // Photo Tip: 透過設定圖片高度，以設定圖片尺寸
+$carousel-max-height: 450px; /* Photo Tip: 透過設定圖片高度，以設定圖片尺寸*/
 
 .sliderWrapper {
+  position: relative;
   display: grid;
-  grid-template-columns: 144px 1fr;
 
   width: $carousel-max-height * 1.8;
   max-height: $carousel-max-height !important;
-  position: relative;
+  grid-template-columns: 144px 1fr;
 
   :global(img) {
     width: 100%;
-    height: 100%;
     max-width: 100%;
+    height: 100%;
     max-height: 100%;
     object-fit: cover;
   }
 }
 
 .sliderFrame {
+  position: absolute;
   width: 100%;
   height: 100%;
 
-  transform: scale(1.52); // Photo Tip: 設定背景圖大小
-  position: absolute;
+  transform: scale(1.52); /* Photo Tip: 設定背景圖大小*/
 
   background-image: url(../../public/photo/photo_frame_inner.png);
   background-position: center;
@@ -43,12 +34,11 @@ $pagination-slider-w: 120px;
 
 .paginationSlider {
   :global(.slick-arrow) {
+    left: 42%;
+    z-index: 2;
     width: 100%;
     height: 10%;
-
-    left: 42%;
     transform: translate(-50%, 0) !important;
-    z-index: 2;
 
     &:before {
       display: none;
@@ -75,33 +65,31 @@ $pagination-slider-w: 120px;
       align-items: center;
 
       width: $pagination-slider-w;
-      height: 80px; // Photo Tip: 搭配設定 JS 的 slidesToShow，可以調整符合輪播圖高度的尺寸
+      height: 80px; /* Photo Tip: 搭配設定 JS 的 slidesToShow，可以調整符合輪播圖高度的尺寸*/
 
       margin: 4px 0;
 
       img {
-        aspect-ratio: 3 / 2;
+        overflow: hidden;
 
         border: 2px solid transparent;
         border-radius: 8px;
+        aspect-ratio: 3 / 2;
 
         filter: brightness(0.7);
         transition: all 0.3s ease-in-out;
-
-        overflow: hidden;
       }
     }
   }
 }
 
 .arrow {
-  display: inline-block;
-  width: 100%;
-  height: calc($pagination-slider-w * 0.6);
-
   position: absolute;
   top: 50%;
   left: 50%;
+  display: inline-block;
+  width: 100%;
+  height: calc($pagination-slider-w * 0.6);
 
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background-image: url(../../public/carousel/arrow.png);
@@ -125,12 +113,12 @@ $pagination-slider-w: 120px;
 
   .item {
     h3 {
+      position: relative;
       display: flex;
-      justify-content: center;
-      align-items: center;
 
       height: $carousel-max-height;
-      position: relative;
+      justify-content: center;
+      align-items: center;
 
       img {
         filter: brightness(0.7);

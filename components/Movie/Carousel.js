@@ -23,45 +23,43 @@ function Carousel() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
 
   return (
-    <div className={styles.container}>
-      <div className={styles.sliderWrapper}>
-        <div className={styles.movieTitle} />
+    <div className={styles.sliderWrapper}>
+      <div className={styles.movieTitle} />
 
-        <div className={styles.sliderFrame}>
-          <div style={{ '--bg-image': `url(${movies[currentSlideIndex].image})` }} />
-          <div style={{ '--bg-image': `url(${movies[currentSlideIndex].image})` }} />
-        </div>
-
-        <Slider
-          infinite={true}
-          speed={500}
-          slidesToShow={1}
-          slidesToScroll={1}
-          className={styles.movieSlider}
-          prevArrow={
-            <button>
-              <ArrowIcon className={styles.right} />
-            </button>
-          }
-          nextArrow={
-            <button>
-              <ArrowIcon className={styles.left} />
-            </button>
-          }
-          dots={true}
-          customPaging={() => <span className={styles.dot} />}
-          beforeChange={(_, newIndex) => setCurrentSlideIndex(newIndex)}
-        >
-          {movies.map((movie, index) => (
-            <CarouselItem
-              key={index}
-              index={index}
-              {...movie}
-              currentSlideIndex={currentSlideIndex}
-            />
-          ))}
-        </Slider>
+      <div className={styles.sliderFrame}>
+        <div style={{ '--bg-image': `url(${movies[currentSlideIndex].image})` }} />
+        <div style={{ '--bg-image': `url(${movies[currentSlideIndex].image})` }} />
       </div>
+
+      <Slider
+        infinite={true}
+        speed={500}
+        slidesToShow={1}
+        slidesToScroll={1}
+        className={styles.movieSlider}
+        prevArrow={
+          <button>
+            <ArrowIcon className={styles.right} />
+          </button>
+        }
+        nextArrow={
+          <button>
+            <ArrowIcon className={styles.left} />
+          </button>
+        }
+        dots={true}
+        customPaging={() => <span className={styles.dot} />}
+        beforeChange={(_, newIndex) => setCurrentSlideIndex(newIndex)}
+      >
+        {movies.map((movie, index) => (
+          <CarouselItem
+            key={index}
+            index={index}
+            {...movie}
+            currentSlideIndex={currentSlideIndex}
+          />
+        ))}
+      </Slider>
     </div>
   )
 }

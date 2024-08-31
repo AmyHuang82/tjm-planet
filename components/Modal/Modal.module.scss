@@ -11,9 +11,10 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  display: flex;
   width: 85vw;
-  padding: 20px 40px;
   border-radius: 20px;
   transform: translate(-50%, -50%);
-  background-color: white;
+  align-items: center;
+  justify-content: center;
 }
