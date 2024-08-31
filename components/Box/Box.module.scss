@@ -1,7 +1,10 @@
 .box {
   position: relative;
+  display: flex;
   max-width: 100dvw;
   min-height: 100dvh;
+  justify-content: center;
+  align-items: center;
 
   > * {
     position: absolute;
