@@ -17,8 +17,6 @@ function CarouselItem({ index, title, url, image, currentSlideIndex }) {
     movieRef.current.src = `${url}?autoplay=1`
   }
 
-  useEffect(() => {}, [isLoaded])
-
   useEffect(() => {
     setIsPlaying(false)
 
