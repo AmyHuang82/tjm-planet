@@ -9,8 +9,9 @@
 
 .closeButton {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 0;
+  right: 0;
+  padding: 20px;
   border: none;
   background: none;
 
@@ -26,7 +27,7 @@
   top: 50%;
   left: 50%;
   display: flex;
-  width: 85vw;
+  width: 100%;
   border-radius: 20px;
   transform: translate(-50%, -50%);
   align-items: center;

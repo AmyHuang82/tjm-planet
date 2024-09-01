@@ -24,13 +24,12 @@ function Modal({ children, onCancel, ...props }) {
 
   return createPortal(
     <div ref={maskRef} className={styles.mask} onClick={onMaskClick}>
-      <button className={styles.closeButton} onClick={onCancel}>
-        <Cross />
-      </button>
-
       <div className={styles.modal} {...props}>
         {children}
       </div>
+      <button className={styles.closeButton} onClick={onCancel}>
+        <Cross />
+      </button>
     </div>,
     portalContainerRef.current
   )
