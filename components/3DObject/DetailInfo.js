@@ -7,6 +7,7 @@ function DetailInfo() {
   return (
     <div className={styles.detailInfo}>
       <Scene />
+      <img src="/carousel/1999_Washington/05.jpg" alt="detail" />
     </div>
   )
 }
