@@ -7,6 +7,9 @@ import styles from './Scene.module.scss'
 function Scene() {
   return (
     <div className={styles.canvasContainer}>
+      <video className={styles.video} autoPlay loop>
+        <source src="/3DObjects/scene.mp4" type="video/mp4" />
+      </video>
       <Canvas>
         <OrbitControls position={[50, 10, 50]} />
         <Suspense fallback={null}>
