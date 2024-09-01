@@ -1,10 +1,8 @@
 import { Suspense, useEffect, useState } from 'react'
 import Modal from '../Modal/Modal'
-import Movie from '../Movie/Carousel'
 import Photo from '../Photo/Carousel'
-import dynamic from 'next/dynamic'
-
-const Scene = dynamic(() => import('../3DObject/Scene'), { ssr: false })
+import Movie from '../Movie/Carousel'
+import Scene from '../3DObject/BasicInfo'
 
 const ITEMS = [
   {

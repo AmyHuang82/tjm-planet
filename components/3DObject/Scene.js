@@ -4,10 +4,10 @@ import { Canvas } from '@react-three/fiber'
 import Object from './Object'
 import styles from './Scene.module.scss'
 
-function Scene() {
+function Scene({ isBasic = false }) {
   return (
     <div className={styles.canvasContainer}>
-      <video className={styles.video} autoPlay loop>
+      <video className={styles.video} autoPlay={!isBasic} loop>
         <source src="/3DObjects/scene.mp4" type="video/mp4" />
       </video>
       <Canvas>
