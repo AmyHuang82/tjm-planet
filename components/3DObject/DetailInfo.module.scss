@@ -1,16 +1,37 @@
+$position-top: 47%;
+$position-inline: 30px;
+$content-width: 30%;
+
 .detailInfo {
   width: 100dvw;
   height: 100dvh;
 
   img {
     position: absolute;
-    top: 47%;
-    left: 30px;
-    width: 30%;
+    top: $position-top;
+    left: $position-inline;
+    width: $content-width;
     height: 40%;
     box-shadow: 4px 4px 12px 4px rgba(0, 0, 0, 0.5);
     border-radius: 20px;
     transform: translateY(-50%);
     object-fit: cover;
+  }
+
+  .info {
+    position: absolute;
+    top: $position-top;
+    right: $position-inline;
+    overflow: auto;
+    width: $content-width;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #fff;
+    transform: translateY(-50%);
+
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
   }
 }
