@@ -1,50 +1,60 @@
 import { Suspense, useEffect, useState } from 'react'
 import Modal from '../Modal/Modal'
-import Carousel from '../Carousel/Carousel'
-import dynamic from 'next/dynamic'
+import Photo from '../Photo/Carousel'
+import Movie from '../Movie/Carousel'
+import Scene from '../3DObject/BasicInfo'
 
-const Scene = dynamic(() => import('../3DObject/Scene'), { ssr: false })
+const ITEMS = [
+  {
+    id: 'photo',
+    src: '/panorama/photo.png',
+    position: '-4.22 2.006 -4.763',
+    scale: '4.5 3 1',
+    rotation: '0 15 0',
+    Component: Photo,
+  },
+  {
+    id: 'object',
+    src: '/panorama/object.png',
+    position: '0.171 2.006 -5.263',
+    scale: '4.5 3 1',
+    rotation: '0 0 0',
+    Component: Scene,
+  },
+  {
+    id: 'movie',
+    src: '/panorama/movie.png',
+    position: '4.782 2.006 -4.763',
+    scale: '4.5 3 1',
+    rotation: '0 -15 0',
+    Component: Movie,
+  },
+]
 
-function AFrameContent() {
+function AFrameContent({ isModalShown }) {
   return (
     <a-scene cursor="rayOrigin: mouse" raycaster="objects: [clickable]">
-      <a-sky src="/panorama/demo.png" rotation="0 -130 0" />
-      <a-image
-        src="/carousel/1999_Washington/01.jpg"
-        position="5.0263 2.00585 -4.26811"
-        scale="4.5 3 1"
-        clickable="carousel"
-        class="clickable"
-        rotation="0 -12.44 0"
-      />
-      <a-image
-        src="/3DObjects/3D_object_preview.jpg"
-        position="-0.34 1.98 -4.77677"
-        scale="4.5 3 1"
-        clickable="3dObject"
-        class="clickable"
-      />
+      <a-sky src="/panorama/washington_background.png" rotation="0 -130 0" />
+      {!isModalShown &&
+        ITEMS.map(({ id, ...item }) => (
+          <a-image key={id} clickable={id} class="clickable" {...item} />
+        ))}
     </a-scene>
   )
 }
 
-function AFrame() {
+function AFrame({ clickable = true }) {
   const [isClient, setIsClient] = useState(false)
-  const [openCarousel, setOpenCarousel] = useState(false)
-  const [open3DObject, setOpen3DObject] = useState(false)
+  const [currentItem, setCurrentItem] = useState(null)
 
   function init() {
+    if (!clickable) return
     this.el.addEventListener('click', this.onClick.bind(this))
     this.el.addEventListener('touchend', this.onClick.bind(this))
   }
 
   function onClick() {
-    if (this.data === 'carousel') {
-      setOpenCarousel(true)
-    }
-    if (this.data === '3dObject') {
-      setOpen3DObject(true)
-    }
+    setCurrentItem(this.data)
   }
 
   useEffect(() => {
@@ -69,16 +79,14 @@ function AFrame() {
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>
-        <AFrameContent />
+        <AFrameContent isModalShown={Boolean(currentItem)} />
       </Suspense>
-      {openCarousel && (
-        <Modal onCancel={() => setOpenCarousel(false)}>
-          <Carousel />
-        </Modal>
-      )}
-      {open3DObject && (
-        <Modal onCancel={() => setOpen3DObject(false)}>
-          <Scene />
+      {currentItem && (
+        <Modal onCancel={() => setCurrentItem(null)}>
+          {ITEMS.map(({ id, Component }) => {
+            if (id !== currentItem) return null
+            return <Component key={id} />
+          })}
         </Modal>
       )}
     </>

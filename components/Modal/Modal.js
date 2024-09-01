@@ -1,4 +1,6 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
+import { createPortal } from 'react-dom'
+import Cross from './Cross'
 import styles from './Modal.module.scss'
 
 function Modal({ children, onCancel, ...props }) {
@@ -10,12 +12,26 @@ function Modal({ children, onCancel, ...props }) {
     }
   }
 
-  return (
+  const portalContainerRef = useRef(document.createElement('div'))
+  useEffect(() => {
+    const portalContainer = portalContainerRef.current
+    document.body.appendChild(portalContainer)
+
+    return () => {
+      document.body.removeChild(portalContainer)
+    }
+  }, [])
+
+  return createPortal(
     <div ref={maskRef} className={styles.mask} onClick={onMaskClick}>
       <div className={styles.modal} {...props}>
         {children}
       </div>
-    </div>
+      <button className={styles.closeButton} onClick={onCancel}>
+        <Cross />
+      </button>
+    </div>,
+    portalContainerRef.current
   )
 }
 

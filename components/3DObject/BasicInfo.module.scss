@@ -1,0 +1,65 @@
+.basicInfo {
+  position: relative;
+  display: flex;
+  width: 100%;
+  aspect-ratio: 16/9;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  width: 88.5%;
+  height: 71%;
+  background-color: #fffdf9;
+
+  .object {
+    width: 40%;
+    height: 90%;
+
+    > div > * {
+      border-radius: 32px;
+    }
+
+    > div > div {
+      box-shadow: inset 4px 4px 12px 4px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .text {
+    width: 40%;
+    text-align: center;
+
+    h2 {
+      margin-bottom: 20px;
+      color: #5b5b5b;
+    }
+
+    button {
+      padding: 10px 32px;
+      margin-top: 20px;
+      border: none;
+      background: #ffb048;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      border-radius: 25px;
+    }
+  }
+}
+
+.frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-image: url(../../public/movie/movie_frame_inner.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+}

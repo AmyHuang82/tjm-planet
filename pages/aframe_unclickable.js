@@ -1,5 +1,5 @@
-import AFrameUnClickable from '@/components/AFrame/AFrameUnClickable'
+import AFrame from '@/components/AFrame/AFrame'
 
 export default function AFrameUnClickablePage() {
-  return <AFrameUnClickable />
+  return <AFrame clickable={false} />
 }

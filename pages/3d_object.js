@@ -1,10 +1,10 @@
 import Box from '@/components/Box/Box'
-import Scene from '@/components/3DObject/Scene'
+import BasicInfo from '@/components/3DObject/BasicInfo'
 
 export default function ThreeDObject() {
   return (
     <Box>
-      <Scene />
+      <BasicInfo />
     </Box>
   )
 }

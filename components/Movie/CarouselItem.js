@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { useEffect, useRef, useState } from 'react'
 import styles from './Carousel.module.scss'
 
@@ -17,8 +16,6 @@ function CarouselItem({ index, title, url, image, currentSlideIndex }) {
     setIsPlaying(true)
     movieRef.current.src = `${url}?autoplay=1`
   }
-
-  useEffect(() => {}, [isLoaded])
 
   useEffect(() => {
     setIsPlaying(false)
@@ -42,11 +39,11 @@ function CarouselItem({ index, title, url, image, currentSlideIndex }) {
             allow="accelerometer; clipboard-write; gyroscope; picture-in-picture"
             allowFullScreen={true}
             onLoad={setIsLoaded}
-          ></iframe>
+          />
         )}
         <div className={styles.cover}>
           <img src={image} alt={title} />
-          {isLoaded && <div onClick={playVideo}></div>}
+          {isLoaded && <div onClick={playVideo} />}
         </div>
       </h3>
     </div>
