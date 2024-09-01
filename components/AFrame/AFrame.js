@@ -10,26 +10,26 @@ const ITEMS = [
   {
     id: 'photo',
     src: '/panorama/photo.png',
-    position: '-4.22 2.006 -4.268',
+    position: '-4.22 2.006 -4.763',
     scale: '4.5 3 1',
-    rotation: '0 17.70496882733757 0',
+    rotation: '0 15 0',
     Component: Photo,
-  },
-  {
-    id: 'movie',
-    src: '/panorama/movie.png',
-    position: '5.0263 2.00585 -4.26811',
-    scale: '4.5 3 1',
-    rotation: '0 -12.44 0',
-    Component: Movie,
   },
   {
     id: 'object',
     src: '/panorama/object.png',
-    position: '0.171 2.006 -4.763',
-    scale: '4.5 2.2 1',
+    position: '0.171 2.006 -5.263',
+    scale: '4.5 3 1',
     rotation: '0 0 0',
     Component: Scene,
+  },
+  {
+    id: 'movie',
+    src: '/panorama/movie.png',
+    position: '4.782 2.006 -4.763',
+    scale: '4.5 3 1',
+    rotation: '0 -15 0',
+    Component: Movie,
   },
 ]
 
