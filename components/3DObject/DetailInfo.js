@@ -7,6 +7,7 @@ function DetailInfo() {
   return (
     <div className={styles.detailInfo}>
       <Scene />
+      <div className={styles.mask} />
       <img src="/carousel/1999_Washington/05.jpg" alt="detail" />
       <div className={styles.info}>
         <h2>禮尚往來</h2>
