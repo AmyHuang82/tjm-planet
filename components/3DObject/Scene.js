@@ -11,7 +11,7 @@ function Scene({ isBasic = false }) {
         <source src="/3DObjects/scene.mp4" type="video/mp4" />
       </video>
       <Canvas>
-        <OrbitControls position={[50, 10, 50]} />
+        <OrbitControls position={[50, 10, 50]} autoRotate={!isBasic} autoRotateSpeed={0.5} />
         <Suspense fallback={null}>
           <Environment preset="lobby" />
         </Suspense>
