@@ -112,8 +112,8 @@ $caption-bar-height: 5px;
   position: absolute;
   top: 10px;
   left: 50%;
-  z-index: 2;
   display: inline-block;
+  z-index: 2;
   width: 60px;
   height: $caption-bar-height;
   border-radius: 15px;
@@ -126,9 +126,9 @@ $caption-bar-height: 5px;
     content: '';
     position: absolute;
     top: 0%;
-    transform: translate(0%, -35%);
     width: calc($carousel-max-height / 3);
     height: calc($carousel-max-height / 3);
+    transform: translate(0%, -35%);
     pointer-events: none;
 
     background-repeat: no-repeat;
@@ -165,7 +165,6 @@ $caption-bar-height: 5px;
   }
   100% {
     opacity: 0;
-    // display: none;
   }
 }
 
