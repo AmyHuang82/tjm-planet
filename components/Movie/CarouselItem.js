@@ -4,46 +4,31 @@ import styles from './Carousel.module.scss'
 function CarouselItem({ index, title, url, image, currentSlideIndex }) {
   const isActive = index === currentSlideIndex
 
-  const movieRef = useRef(null)
+  const videoRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(false)
-  const [isLoaded, setIsLoaded] = useState(false)
 
-  const playVideo = (e) => {
-    if (!isActive || !movieRef.current) return
-
-    e.preventDefault()
-
+  function playVideo() {
+    if (!isActive || !videoRef.current) return
+    videoRef.current.play()
     setIsPlaying(true)
-    movieRef.current.src = `${url}?autoplay=1`
   }
 
   useEffect(() => {
-    setIsPlaying(false)
+    if (isActive || !videoRef.current) return
 
-    if (isActive && movieRef.current) {
-      movieRef.current.allow =
-        'accelerometer; clipboard-write; gyroscope; picture-in-picture; autoplay'
-    }
+    videoRef.current.pause()
+    setIsPlaying(false)
   }, [isActive])
 
   return (
     <div className={`${styles.item} ${isPlaying ? styles.playing : ''}`} key={index}>
       <h3>
-        {isActive && (
-          <iframe
-            ref={movieRef}
-            title={title}
-            src={url}
-            height="360"
-            width="640"
-            allow="accelerometer; clipboard-write; gyroscope; picture-in-picture"
-            allowFullScreen={true}
-            onLoad={setIsLoaded}
-          />
-        )}
+        <video ref={videoRef} src={url} preload="none" controls controlslist="nodownload">
+          <source src={url} type="video/mp4" />
+        </video>
         <div className={styles.cover}>
           <img src={image} alt={title} />
-          {isLoaded && <div onClick={playVideo} />}
+          <div onClick={playVideo} />
         </div>
       </h3>
     </div>

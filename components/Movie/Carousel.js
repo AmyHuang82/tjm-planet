@@ -8,8 +8,8 @@ import { useState } from 'react'
 
 const movies = [
   {
-    title: '千禧龍舞橫貫美利堅',
-    url: 'https://sqps.onstreamsecure.com/origin/taijimen/html5/bf2d2fb3-593c-498d-9ae5-f0b51e78d5be.mp4',
+    title: '愛在飛揚西雅圖',
+    url: 'https://sqps.onstreamsecure.com/origin/taijimen/html5/V_EF10411_2.mp4',
     image: '/movie/01.jpg',
   },
   {

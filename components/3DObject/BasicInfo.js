@@ -23,9 +23,9 @@ function BasicInfo() {
               小型紅雪松彎木盒
             </h2>
             <p>
-              華盛頓州駱家輝州長
+              華盛頓州駱家輝州長 親贈
               <br />
-              親贈 1999.07.30
+              1999.07.30
             </p>
             <button onClick={() => setIsModalShown(true)}>詳細介紹</button>
           </div>

@@ -31,6 +31,7 @@ $caption-bar-height: 5px;
   font-size: 32px;
   color: #ffffff;
   text-align: center;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   border-radius: 6px;
   transform: translateY(70%);
   cursor: grab;
@@ -41,12 +42,6 @@ $caption-bar-height: 5px;
   &.active {
     border-radius: 0;
     transform: translateY(0%);
-
-    .captionHeaderSubtitle {
-      padding-bottom: 16px;
-      white-space: normal;
-      text-overflow: visible;
-    }
 
     .captionBodyScroll {
       @include disable-scrollbar();
@@ -112,8 +107,8 @@ $caption-bar-height: 5px;
   position: absolute;
   top: 10px;
   left: 50%;
-  z-index: 2;
   display: inline-block;
+  z-index: 2;
   width: 60px;
   height: $caption-bar-height;
   border-radius: 15px;
@@ -126,9 +121,9 @@ $caption-bar-height: 5px;
     content: '';
     position: absolute;
     top: 0%;
-    transform: translate(0%, -35%);
     width: calc($carousel-max-height / 3);
     height: calc($carousel-max-height / 3);
+    transform: translate(0%, -35%);
     pointer-events: none;
 
     background-repeat: no-repeat;
@@ -165,7 +160,6 @@ $caption-bar-height: 5px;
   }
   100% {
     opacity: 0;
-    // display: none;
   }
 }
 
@@ -176,24 +170,24 @@ $caption-bar-height: 5px;
 }
 
 .captionHeaderSubtitle {
+  display: -webkit-box;
   overflow: hidden;
   max-width: 60%;
   margin: 0 auto;
-
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  white-space: pre-line;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  word-break: break-all;
 }
 
 .captionBody {
   position: relative;
-
   overflow: hidden;
   max-width: 65%;
   height: calc($carousel-max-height * 1);
-
   margin: 0 auto;
-
-  font-size: 32px;
+  font-size: 24px;
+  font-weight: 500;
   text-align: left;
   text-align: justify;
   transition: opacity 0.3s ease-in-out;
@@ -202,8 +196,10 @@ $caption-bar-height: 5px;
 .captionBodyTitle {
   padding-top: 32px;
   margin-bottom: 48px;
-  font-size: 42px;
+  font-size: 32px;
+  font-weight: 700;
   text-align: center;
+  white-space: pre-line;
 }
 
 .captionBodyScroll {
