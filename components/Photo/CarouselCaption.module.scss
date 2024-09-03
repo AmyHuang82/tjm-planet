@@ -1,6 +1,9 @@
 $carousel-max-height: 450px;
 $carousel-ratio: 16 / 9;
 
+$caption-font: 2.375rem;
+$caption-bar-height: 5px;
+
 @mixin disable-scrollbar() {
   &::-webkit-scrollbar {
     display: none;
@@ -30,7 +33,7 @@ $carousel-ratio: 16 / 9;
   text-align: center;
   border-radius: 6px;
   transform: translateY(70%);
-  cursor: pointer;
+  cursor: grab;
   aspect-ratio: $carousel-ratio;
 
   transition: transform 0.3s ease-in-out;
@@ -63,6 +66,10 @@ $carousel-ratio: 16 / 9;
       opacity: 1;
     }
   }
+
+  &.hidden {
+    transform: translateY(calc(98% - $caption-bar-height));
+  }
 }
 
 @keyframes fadeIn {
@@ -91,6 +98,11 @@ $carousel-ratio: 16 / 9;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
   }
 
+  &.hidden {
+    transform: translateY(calc(98% - $caption-bar-height));
+  }
+
+  &.hidden,
   &.animation {
     animation: fadeIn 0.8s ease-in-out;
   }
@@ -100,13 +112,61 @@ $carousel-ratio: 16 / 9;
   position: absolute;
   top: 10px;
   left: 50%;
+  z-index: 2;
   display: inline-block;
   width: 60px;
-  height: 5px;
+  height: $caption-bar-height;
   border-radius: 15px;
   transform: translateX(-50%);
 
   background-color: white;
+  cursor: grab;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0%;
+    transform: translate(0%, -35%);
+    width: calc($carousel-max-height / 3);
+    height: calc($carousel-max-height / 3);
+    pointer-events: none;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../../public/photo/touch_icon.png);
+
+    animation:
+      blink 5s linear forwards,
+      fadeOut 1s linear 5s forwards;
+  }
+}
+
+@keyframes blink {
+  30%,
+  50%,
+  70%,
+  90% {
+    opacity: 0;
+  }
+
+  0%,
+  20%,
+  40%,
+  60%,
+  80%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    // display: none;
+  }
 }
 
 .captionHeader {
