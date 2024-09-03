@@ -42,12 +42,6 @@ $caption-bar-height: 5px;
     border-radius: 0;
     transform: translateY(0%);
 
-    .captionHeaderSubtitle {
-      padding-bottom: 16px;
-      white-space: normal;
-      text-overflow: visible;
-    }
-
     .captionBodyScroll {
       @include disable-scrollbar();
       height: 100%;
