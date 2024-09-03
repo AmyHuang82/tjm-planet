@@ -7,7 +7,13 @@ import styles from './Scene.module.scss'
 function Scene({ isBasic = false }) {
   return (
     <div className={styles.canvasContainer}>
-      <video className={styles.video} autoPlay={!isBasic} loop>
+      <video
+        className={styles.video}
+        autoPlay={!isBasic}
+        loop
+        playsInline
+        webkit-playsinline="true"
+      >
         <source src="/3DObjects/scene.mp4" type="video/mp4" />
       </video>
       <Canvas>
