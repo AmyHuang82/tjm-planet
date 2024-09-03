@@ -169,11 +169,14 @@ $caption-bar-height: 5px;
 }
 
 .captionHeaderSubtitle {
+  display: -webkit-box;
   overflow: hidden;
   max-width: 60%;
   margin: 0 auto;
-  white-space: pre;
-  text-overflow: ellipsis;
+  white-space: pre-line;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  word-break: break-all;
 }
 
 .captionBody {
