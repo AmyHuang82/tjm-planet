@@ -74,7 +74,7 @@ function Carousel({ totalSlides = 6 }) {
           <div key={index} className={styles.item}>
             <h3>
               <img src={getImage(index)} alt={index} />
-              <CarouselCaption paragraphCount={index} currentSlideIndex={currentSlideIndex} />
+              <CarouselCaption currentSlideIndex={currentSlideIndex} />
             </h3>
           </div>
         ))}
