@@ -23,7 +23,7 @@ function CarouselItem({ index, title, url, image, currentSlideIndex }) {
   return (
     <div className={`${styles.item} ${isPlaying ? styles.playing : ''}`} key={index}>
       <h3>
-        <video ref={videoRef} src={url} preload="none" controls controlslist="nodownload">
+        <video ref={videoRef} src={url} preload="none" controls controlsList="nodownload">
           <source src={url} type="video/mp4" />
         </video>
         <div className={styles.cover}>
