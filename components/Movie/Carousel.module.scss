@@ -80,12 +80,12 @@ $arrow-translate: 9%;
     }
 
     &::before {
-      left: calc(0% - 110px);
+      left: calc(0% - 90px);
       background-position: left;
     }
 
     &::after {
-      right: calc(0% - 110px);
+      right: calc(0% - 90px);
       background-position: right;
     }
   }
