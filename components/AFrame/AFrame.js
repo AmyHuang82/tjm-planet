@@ -8,24 +8,24 @@ const ITEMS = [
   {
     id: 'photo',
     src: '/panorama/photo.png',
-    position: '-4.22 2.006 -4.763',
-    scale: '4.5 3 1',
+    position: '-4 1.5 -4.763',
+    scale: '3.75 3.2575 1',
     rotation: '0 15 0',
     Component: Photo,
   },
   {
     id: 'object',
     src: '/panorama/object.png',
-    position: '0.171 2.006 -5.263',
-    scale: '4.5 3 1',
+    position: '0 1.6 -5.263',
+    scale: '2.22 3.2575 1',
     rotation: '0 0 0',
     Component: Scene,
   },
   {
     id: 'movie',
     src: '/panorama/movie.png',
-    position: '4.782 2.006 -4.763',
-    scale: '4.5 3 1',
+    position: '4 1.5 -4.763',
+    scale: '3.75 3.2575 1',
     rotation: '0 -15 0',
     Component: Movie,
   },
@@ -34,7 +34,8 @@ const ITEMS = [
 function AFrameContent({ isModalShown }) {
   return (
     <a-scene cursor="rayOrigin: mouse" raycaster="objects: [clickable]">
-      <a-sky src="/panorama/washington_background.png" rotation="0 -130 0" />
+      <a-sky src="/panorama/washington_background.png" rotation="0 -128 0" position="0 -10 -50" />
+      <a-image src="/panorama/title.png" position="0 4 -5.263" scale="5 1.6 1" />
       {!isModalShown &&
         ITEMS.map(({ id, ...item }) => (
           <a-image key={id} clickable={id} class="clickable" {...item} />
